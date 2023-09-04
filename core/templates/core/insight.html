@@ -1,0 +1,172 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}
+<title>Insights | Sframe</title>
+{% endblock title %}
+
+{% block main %}
+<div class="responsivegrid aem-GridColumn aem-GridColumn--default--12">
+
+
+    <div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+
+        <div class="searchComponent aem-GridColumn aem-GridColumn--default--12">
+
+            <div class="ssmp-search place">
+
+
+
+                <div class="aem-Grid aem-Grid--12">
+                    <div class="aem-GridColumn aem-GridColumn--default--3 aem-GridColumn--tablet--12 aem-GridColumn--phone--12"
+                        style="min-height:0.1px">
+
+                        <div>
+                            <div class="ssmp-homesection__title">
+                                <h1 class="small-page-title">Insights</h1>
+                            </div>
+                        </div>
+                        <div class="ssmp-filters">
+                            <div class="mobile-filters-title filters-title">
+                                <svg class="ssmpsvg icon_filter ssmpsvg-s">
+                                    <use xlink:href="#icon_filter"></use>
+                                </svg>
+                                <span>Filters (<span class="filtered"><span class="filtered-num">0</span> of
+                                    </span><span class="total-num">78</span> Results)</span>
+                            </div>
+                            <div class="filters-container">
+                                <div class="filters-content">
+                                    <div class="filters-main">
+                                        <svg class='ssmpsvg close close-filters ssmpsvg-m'>
+                                            <use xlink:href='#close'></use>
+                                        </svg>
+                                        <div class="filters-title">
+                                            <span class="filters-title-label">Filters (<span class="filtered"><span
+                                                        class="filtered-num">0</span> of
+                                                </span><span class="total-num">{{filter_count}}</span>
+                                                Results)</span>
+                                            <a href="#" class="clear-filters">Clear<svg class="ssmpsvg close ssmpsvg-s">
+                                                    <use xlink:href="#close"></use>
+                                                </svg></a>
+                                        </div>
+                                        <ul class="filters-list">
+                                            <li class="category checkbox-group" data-key="insights-topic"><a href="#"
+                                                    class="category-name">Topic<svg
+                                                        class="ssmpsvg ssmpsvg-s caret-down">
+                                                        <use xlink:href="#caret-down"></use>
+                                                    </svg></a>
+                                                <ul class="sub-categories" style="display: block;">
+                                                    {% for topic in topics %}
+                                                    <li class="ctg checkbox" data-key="ai-machine-learning"
+                                                        data-count="4"><svg class="ssmpsvg close">
+                                                            <use xlink:href="#close"></use>
+                                                        </svg><a href="{% url 'insights' topic.id%}"> {{topic.name}} </a></li>
+                                                    {% endfor %}
+
+                                                </ul>
+                                            </li>
+                                            <li class="category checkbox-group" data-key="insights-section"><a href="#"
+                                                    class="category-name">Insights Section<svg
+                                                        class="ssmpsvg ssmpsvg-s caret-down">
+                                                        <use xlink:href="#caret-down"></use>
+                                                    </svg></a>
+                                                <ul class="sub-categories" style="display: block;">
+                                                    {% for section in sections %}
+                                                    <li class="ctg checkbox" data-key="digital-and-technology"
+                                                        data-count="22"><svg class="ssmpsvg close">
+                                                            <use xlink:href="#close"></use>
+                                                        </svg>{{section.name}}</li>
+                                                    {% endfor %}
+
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="ssmp-ctalink--button filters-bottom">
+                                        <div class="ssmp-ctalink">
+                                            <a class="ssmp-ctalink__link apply-filters" href="#">Apply</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div
+                        class="aem-GridColumn aem-GridColumn--default--9 aem-GridColumn--tablet--12 aem-GridColumn--phone--12">
+                        <div class="banner-list">
+                            <div class="insights-banner insights-banner-templete">
+                                <div class="aem-Grid aem-Grid--12">
+                                    <div
+                                        class="banner-left aem-GridColumn aem-GridColumn--default--6 aem-GridColumn--tablet--12 aem-GridColumn--phone--12">
+                                        <div class="ssmp-title--article banner-title">
+                                            <h2></h2>
+                                        </div>
+                                        <div class="richtext">
+                                            <p class="banner-desc"></p>
+                                        </div>
+                                        <div class="banner-cta ssmp-ctalink--button">
+                                            <div class="ssmp-ctalink"></div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="banner-right aem-GridColumn aem-GridColumn--default--6 ssmp-d-mobile-none">
+                                        <div class="cmp-image banner-img"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="results">
+                            <p class="keywords" style="">{{category}}</p>
+                            <p class="filter-label">Digital and Technology; ESG; Regulation and Risk; Markets;
+                                Perspectives</p>
+                            <ul class="results-list">
+                               {% for insight in insights %}
+                                <li
+                                    class="result-item ctg-insights-type-executive-insight ctg-insights-section-perspectives ctg-insights-topic-research ctg-insights-topic-investor-sentiment">
+                                    <div class="details">
+                                        <p class="title"><a
+                                                href="">{{insight.title}}</a></p>
+                                        <p class="date-author ssmp-d-tablet-none ssmp-d-mobile-none"><span>{{insight.date}}</span></p>
+                                        <p class="date-author ssmp-d-desktop-none ssmp-d-large-screen-none"><span>{{insight.date}}</span></p>
+                                        <p class="desc">{{insight.description}}</p>
+                                        <p class="eyebrow">
+                                            
+                                            <a
+                                                href="">{{insite.topics}}</a>
+                                            </p>
+                                            
+                                    </div><a
+                                        href=""
+                                        class="img"><img
+                                            data-srcset="{{insight.header_image.url}}"
+                                            alt="" class="" width="900" height="490"
+                                            src="{{insight.header_image.url}}"></a>
+                                </li>
+                                {% endfor %}
+                                
+                            </ul>
+                            <div class="no-result" style="display: none;"></div>
+                            <div class="ssmp-ctalink--button">
+                                <div class="ssmp-ctalink">
+                                    <a class="ssmp-ctalink__link ssmp-load-more" href="#" aa-global-ctabutton=""
+                                        data-aa-checked="true" style="display: inline-block;">Load More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" id="search-info-translation"
+                    value="{&#34;client-type&#34;:&#34;Client Type&#34;,&#34;asset-manager&#34;:&#34;Asset Manager&#34;,&#34;wealth-manager&#34;:&#34;Wealth Manager&#34;,&#34;asset-owner&#34;:&#34;Asset Owner&#34;,&#34;alternative-asset-manager&#34;:&#34;Alternative Asset Manager&#34;,&#34;insurer&#34;:&#34;Insurer&#34;,&#34;official-institution&#34;:&#34;Official Institution&#34;,&#34;insights-topic&#34;:&#34;Topic&#34;,&#34;consolidation---m&amp;a&#34;:&#34;Consolidation %2F M&amp;A&#34;,&#34;consolidation-m&amp;a&#34;:&#34;Consolidation M&amp;A&#34;,&#34;portfolio-modeling-&amp;-construction&#34;:&#34;Portfolio Modeling &amp; Construction&#34;,&#34;ai-machine-learning&#34;:&#34;AI Machine Learning&#34;,&#34;alternatives&#34;:&#34;Alternatives&#34;,&#34;asset-allocation&#34;:&#34;Asset Allocation&#34;,&#34;asset-stewardship&#34;:&#34;Asset Stewardship&#34;,&#34;blockchain&#34;:&#34;Blockchain&#34;,&#34;board-governance&#34;:&#34;Board Governance&#34;,&#34;climate-risk---decarbonization&#34;:&#34;Climate Risk   Decarbonization&#34;,&#34;cloud---saas&#34;:&#34;Cloud   SaaS&#34;,&#34;collateral-management&#34;:&#34;Collateral Management&#34;,&#34;community-leadership&#34;:&#34;Community Leadership&#34;,&#34;corporate-responsibility&#34;:&#34;Corporate Responsibility&#34;,&#34;covid-19&#34;:&#34;COVID-19&#34;,&#34;crisis-leadership&#34;:&#34;Crisis Leadership&#34;,&#34;crypto-currencies&#34;:&#34;Crypto Currencies&#34;,&#34;cybersecurity&#34;:&#34;Cybersecurity&#34;,&#34;data-management&#34;:&#34;Data Management&#34;,&#34;defined-contribution-pensions&#34;:&#34;Defined Contribution %2F Pensions&#34;,&#34;digital-assets&#34;:&#34;Digital Assets&#34;,&#34;digitization&#34;:&#34;Digitization&#34;,&#34;emerging-markets&#34;:&#34;Emerging Markets&#34;,&#34;engineering&#34;:&#34;Engineering&#34;,&#34;etfs&#34;:&#34;ETFs&#34;,&#34;geopolitics&#34;:&#34;Geopolitics&#34;,&#34;growth&#34;:&#34;Growth&#34;,&#34;industry-innovation&#34;:&#34;Industry Innovation&#34;,&#34;insurance&#34;:&#34;Insurance&#34;,&#34;interest-rates&#34;:&#34;Interest Rates&#34;,&#34;investment-operations&#34;:&#34;Investment Operations&#34;,&#34;investor-sentiment&#34;:&#34;Investor Sentiment&#34;,&#34;liquidity&#34;:&#34;Liquidity&#34;,&#34;macro-trends&#34;:&#34;Macro Trends&#34;,&#34;market-sentiment&#34;:&#34;Market Sentiment&#34;,&#34;operational-resilience&#34;:&#34;Operational Resilience&#34;,&#34;outsourcing&#34;:&#34;Outsourcing&#34;,&#34;policy-and-politics&#34;:&#34;Policy and Politics&#34;,&#34;practice-management&#34;:&#34;Practice Management&#34;,&#34;private-markets&#34;:&#34;Private Markets&#34;,&#34;regulations&#34;:&#34;Regulations&#34;,&#34;research&#34;:&#34;Research&#34;,&#34;retirement&#34;:&#34;Retirement&#34;,&#34;return-to-office&#34;:&#34;Return to Office&#34;,&#34;risk-management&#34;:&#34;Risk Management&#34;,&#34;state-street-alpha&#34;:&#34;State Street Alpha℠&#34;,&#34;sustainability&#34;:&#34;Sustainability&#34;,&#34;talent&#34;:&#34;Talent&#34;,&#34;tax&#34;:&#34;Tax&#34;,&#34;technology&#34;:&#34;Technology&#34;,&#34;trade&#34;:&#34;Trade&#34;,&#34;volatility&#34;:&#34;Volatility&#34;,&#34;wealth-management&#34;:&#34;Wealth Management&#34;,&#34;workplace-of-the-future&#34;:&#34;Workplace of the Future&#34;,&#34;consolidation-ma&#34;:&#34;Consolidation   M&amp;A&#34;,&#34;portfolio-modeling-construction&#34;:&#34;Portfolio Modeling and Construction&#34;,&#34;diversity-equity-and-inclusion&#34;:&#34;Diversity Equity and Inclusion&#34;,&#34;research-retreat-fall-2022&#34;:&#34;Research Retreat Fall 2022&#34;,&#34;insights-type&#34;:&#34;Insight Type&#34;,&#34;awards-and-accolades&#34;:&#34;Awards and Accolades&#34;,&#34;audio&#34;:&#34;Audio&#34;,&#34;executive-insight&#34;:&#34;Executive Insight&#34;,&#34;event&#34;:&#34;Event&#34;,&#34;video&#34;:&#34;Video&#34;,&#34;insights-section&#34;:&#34;Insights Section&#34;,&#34;digital-and-technology&#34;:&#34;Digital and Technology&#34;,&#34;esg&#34;:&#34;ESG&#34;,&#34;regulation-and-risk&#34;:&#34;Regulation and Risk&#34;,&#34;markets&#34;:&#34;Markets&#34;,&#34;perspectives&#34;:&#34;Perspectives&#34;,&#34;core-capability&#34;:&#34;Core Capability&#34;,&#34;investment-management&#34;:&#34;Investment Management&#34;,&#34;asset-servicing&#34;:&#34;Asset Servicing&#34;,&#34;asset-management&#34;:&#34;Asset Management&#34;,&#34;global-markets&#34;:&#34;Global Markets&#34;,&#34;data-and-analytics&#34;:&#34;Data and Analytics&#34;,&#34;cash,-deposit-and-financing-solutions&#34;:&#34;Cash, Deposit and Financing Solutions&#34;,&#34;solution-set&#34;:&#34;Solution Set&#34;,&#34;solutions-category&#34;:&#34;Solutions Category&#34;,&#34;improve-decision-making&#34;:&#34;Improve Decision-making&#34;,&#34;manage-risk&#34;:&#34;Manage Risk&#34;,&#34;access-liquidity&#34;:&#34;Access Liquidity&#34;,&#34;stay-ahead-of-regulation&#34;:&#34;Stay Ahead of Regulation&#34;,&#34;streamline-operations&#34;:&#34;Streamline Operations&#34;,&#34;investor-servicing&#34;:&#34;Investor Servicing&#34;,&#34;hedge-fund-solutions&#34;:&#34;Hedge Fund Solutions&#34;,&#34;custody&#34;:&#34;Custody&#34;,&#34;private-market-solutions&#34;:&#34;Private Market Solutions&#34;,&#34;data-solutions-and-services&#34;:&#34;Data Solutions and Services&#34;,&#34;performance-and-analytics&#34;:&#34;Performance and Analytics&#34;,&#34;funding-and-collateral&#34;:&#34;Funding and Collateral&#34;,&#34;digital-asset-solution&#34;:&#34;Digital Asset solution&#34;,&#34;etf-solutions&#34;:&#34;ETF solutions&#34;,&#34;financial-regulatory-and-tax-reporting&#34;:&#34;Financial Regulatory and Tax Reporting&#34;,&#34;fund-administration-solutions&#34;:&#34;Fund Administration Solutions&#34;,&#34;investment-compliance&#34;:&#34;Investment Compliance&#34;,&#34;investment-operations-outsourcing&#34;:&#34;Investment Operations Outsourcing&#34;,&#34;esg-solutions-(total-esg)&#34;:&#34;ESG Solutions (Total ESG)&#34;,&#34;depositary-and-trustee-services&#34;:&#34;Depositary and Trustee Services&#34;,&#34;cash&#34;:&#34;Cash&#34;,&#34;accounting&#34;:&#34;Accounting&#34;,&#34;securities-finance&#34;:&#34;Securities Finance&#34;,&#34;real-assets-solutions&#34;:&#34;Real Assets Solutions&#34;,&#34;media-type&#34;:&#34;Media Type&#34;,&#34;PDF&#34;:&#34;PDF&#34;,&#34;article&#34;:&#34;Article&#34;,&#34;link-titles&#34;:&#34;Link Titles&#34;,&#34;external-link&#34;:&#34;External Link&#34;,&#34;internal-tag&#34;:&#34;Internal Tag&#34;,&#34;anchor-tag&#34;:&#34;Anchor Tag&#34;,&#34;tags&#34;:{&#34;client-type&#34;:{&#34;child&#34;:{&#34;asset-manager&#34;:{},&#34;wealth-manager&#34;:{},&#34;asset-owner&#34;:{},&#34;alternative-asset-manager&#34;:{},&#34;insurer&#34;:{},&#34;official-institution&#34;:{}}},&#34;insights-topic&#34;:{&#34;child&#34;:{&#34;consolidation---m&amp;a&#34;:{},&#34;consolidation-m&amp;a&#34;:{},&#34;portfolio-modeling-&amp;-construction&#34;:{},&#34;ai-machine-learning&#34;:{},&#34;alternatives&#34;:{},&#34;asset-allocation&#34;:{},&#34;asset-stewardship&#34;:{},&#34;blockchain&#34;:{},&#34;board-governance&#34;:{},&#34;climate-risk---decarbonization&#34;:{},&#34;cloud---saas&#34;:{},&#34;collateral-management&#34;:{},&#34;community-leadership&#34;:{},&#34;corporate-responsibility&#34;:{},&#34;covid-19&#34;:{},&#34;crisis-leadership&#34;:{},&#34;crypto-currencies&#34;:{},&#34;cybersecurity&#34;:{},&#34;data-management&#34;:{},&#34;defined-contribution-pensions&#34;:{},&#34;digital-assets&#34;:{},&#34;digitization&#34;:{},&#34;emerging-markets&#34;:{},&#34;engineering&#34;:{},&#34;etfs&#34;:{},&#34;geopolitics&#34;:{},&#34;growth&#34;:{},&#34;industry-innovation&#34;:{},&#34;insurance&#34;:{},&#34;interest-rates&#34;:{},&#34;investment-operations&#34;:{},&#34;investor-sentiment&#34;:{},&#34;liquidity&#34;:{},&#34;macro-trends&#34;:{},&#34;market-sentiment&#34;:{},&#34;operational-resilience&#34;:{},&#34;outsourcing&#34;:{},&#34;policy-and-politics&#34;:{},&#34;practice-management&#34;:{},&#34;private-markets&#34;:{},&#34;regulations&#34;:{},&#34;research&#34;:{},&#34;retirement&#34;:{},&#34;return-to-office&#34;:{},&#34;risk-management&#34;:{},&#34;state-street-alpha&#34;:{},&#34;sustainability&#34;:{},&#34;talent&#34;:{},&#34;tax&#34;:{},&#34;technology&#34;:{},&#34;trade&#34;:{},&#34;volatility&#34;:{},&#34;wealth-management&#34;:{},&#34;workplace-of-the-future&#34;:{},&#34;consolidation-ma&#34;:{},&#34;portfolio-modeling-construction&#34;:{},&#34;diversity-equity-and-inclusion&#34;:{},&#34;research-retreat-fall-2022&#34;:{}}},&#34;insights-type&#34;:{&#34;child&#34;:{&#34;awards-and-accolades&#34;:{},&#34;audio&#34;:{},&#34;executive-insight&#34;:{},&#34;event&#34;:{},&#34;video&#34;:{}}},&#34;insights-section&#34;:{&#34;child&#34;:{&#34;digital-and-technology&#34;:{},&#34;esg&#34;:{},&#34;regulation-and-risk&#34;:{},&#34;markets&#34;:{},&#34;perspectives&#34;:{}}},&#34;core-capability&#34;:{&#34;child&#34;:{&#34;investment-management&#34;:{},&#34;asset-servicing&#34;:{},&#34;asset-management&#34;:{},&#34;global-markets&#34;:{},&#34;data-and-analytics&#34;:{},&#34;cash,-deposit-and-financing-solutions&#34;:{},&#34;solution-set&#34;:{}}},&#34;solutions-category&#34;:{&#34;child&#34;:{&#34;improve-decision-making&#34;:{},&#34;manage-risk&#34;:{},&#34;access-liquidity&#34;:{},&#34;stay-ahead-of-regulation&#34;:{},&#34;streamline-operations&#34;:{},&#34;investor-servicing&#34;:{},&#34;hedge-fund-solutions&#34;:{},&#34;custody&#34;:{},&#34;private-market-solutions&#34;:{},&#34;data-solutions-and-services&#34;:{},&#34;performance-and-analytics&#34;:{},&#34;funding-and-collateral&#34;:{},&#34;digital-asset-solution&#34;:{},&#34;etf-solutions&#34;:{},&#34;financial-regulatory-and-tax-reporting&#34;:{},&#34;fund-administration-solutions&#34;:{},&#34;investment-compliance&#34;:{},&#34;investment-operations-outsourcing&#34;:{},&#34;research&#34;:{},&#34;esg-solutions-(total-esg)&#34;:{},&#34;depositary-and-trustee-services&#34;:{},&#34;cash&#34;:{},&#34;liquidity&#34;:{},&#34;investment-management&#34;:{},&#34;data-and-analytics&#34;:{},&#34;asset-management&#34;:{},&#34;global-markets&#34;:{},&#34;accounting&#34;:{},&#34;securities-finance&#34;:{},&#34;real-assets-solutions&#34;:{}}},&#34;media-type&#34;:{&#34;child&#34;:{&#34;PDF&#34;:{},&#34;article&#34;:{},&#34;video&#34;:{},&#34;audio&#34;:{}}},&#34;link-titles&#34;:{&#34;child&#34;:{&#34;external-link&#34;:{},&#34;internal-tag&#34;:{},&#34;anchor-tag&#34;:{}}}},&#34;ssmp By&#34;:&#34;By&#34;}">
+                <input type="hidden" id="search-type" value="insights">
+                <input type="hidden" id="search-banner" value="{&#34;bannerSettings&#34;:[]}">
+                <input type="hidden" id="solrAPI" value="/solr/sttprodcollection/select?">
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+{% endblock main %}
