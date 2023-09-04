@@ -26,8 +26,9 @@ SECRET_KEY = 'django-insecure-ajr+2+m=ziz+0&lj1+f)ubn-^wva*!wak3ir2jem_7gi%&w_6@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['chidiebereibiam.up.railway.app', '127.0.0.1']
 
+CSRF_TRUSTED_ORIGINS = ['https://chidiebereibiam.up.railway.app/',]
 
 # Application definition
 
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -120,6 +122,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
+
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [
     STATIC_DIR,
 ]

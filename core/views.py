@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Section, Insight, Topic
-from .filters import InsightFilter
+
 
 # Create your views here.
 
@@ -8,18 +8,18 @@ from .filters import InsightFilter
 def home(request):
     return render (request, 'core/index.html')
 
-def insight(request, id):
-    print(id)
-    if id == "Latest":
+def insight(request, topic):
+    print(topic)
+    if topic == "Latest":
         insight = Insight.objects.all()
     else: 
-        insight = Insight.objects.filter(topic=id).all()
+        insight = Insight.objects.filter(topic__name__startswith=topic).all()
         
     topic_count = Topic.objects.all().count()
     section_count = Section.objects.all().count()
     filter_count  = topic_count + section_count
     sections=Section.objects.all()
-    insight = Insight.objects.all()
+    # insight = Insight.objects.all()
     topics = Topic.objects.all().order_by('name').values()
     
 
@@ -28,6 +28,6 @@ def insight(request, id):
         'topics' :topics,
         'sections':sections,
         'insights':insight,
-        'topic':id,
+        'topic':topic,
     }
     return render (request, 'core/insight.html', context)

@@ -59,7 +59,7 @@
                                                     <li class="ctg checkbox" data-key="ai-machine-learning"
                                                         data-count="4"><svg class="ssmpsvg close">
                                                             <use xlink:href="#close"></use>
-                                                        </svg><a href="{% url 'insights' topic.id%}"> {{topic.name}} </a></li>
+                                                        </svg><a href="{% url 'insights' topic.name%}"> {{topic.name}} </a></li>
                                                     {% endfor %}
 
                                                 </ul>
@@ -117,7 +117,7 @@
                         </div>
 
                         <div class="results">
-                            <p class="keywords" style="">{{category}}</p>
+                            <p class="keywords" style="">{{topic}}</p>
                             <p class="filter-label">Digital and Technology; ESG; Regulation and Risk; Markets;
                                 Perspectives</p>
                             <ul class="results-list">
@@ -131,10 +131,13 @@
                                         <p class="date-author ssmp-d-desktop-none ssmp-d-large-screen-none"><span>{{insight.date}}</span></p>
                                         <p class="desc">{{insight.description}}</p>
                                         <p class="eyebrow">
+                                            {% for top in insight.topic.all %}
+         
                                             
                                             <a
-                                                href="">{{insite.topics}}</a>
-                                            </p>
+                                                href="{% url 'insights' top.name%}">{{top.name}}</a>
+                                            
+                                            {% endfor %}
                                             
                                     </div><a
                                         href=""
